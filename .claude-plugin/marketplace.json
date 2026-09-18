@@ -1,0 +1,18 @@
+{
+  "name": "ipure-skills",
+  "owner": {
+    "name": "IPure",
+    "url": "https://ipure.dev"
+  },
+  "metadata": {
+    "description": "Agent skills for checking IP purity and proxy quality with the free IPure API (ipure.dev).",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ipure",
+      "source": "./",
+      "description": "IP purity check for agents: score, proxy / VPN / Tor detection, blocklists and per-scenario suitability via the free IPure API."
+    }
+  ]
+}

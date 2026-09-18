@@ -1,0 +1,10 @@
+{
+  "name": "ipure",
+  "description": "Check how clean an IP is before using it: purity score, residential vs datacenter, proxy / VPN / Tor, blocklists, and suitability for AI services, social sign-up, streaming, gaming, e-commerce and email. Free IPure API, no key.",
+  "version": "1.0.0",
+  "author": { "name": "IPure", "url": "https://ipure.dev" },
+  "homepage": "https://ipure.dev",
+  "repository": "https://github.com/minner-fun/ipure-skills",
+  "license": "MIT",
+  "keywords": ["ip", "proxy", "vpn", "ip-reputation", "ip-purity", "residential-proxy", "fraud", "scraping"]
+}
