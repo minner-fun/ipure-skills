@@ -62,6 +62,7 @@ curl -s "https://ipure.dev/api/lookup?ip=8.8.8.8" | jq '{purity: .risk.purity, v
 - `usageType`, `nativeType`, `flags` (proxy / VPN / Tor / hosting / relay), `vpnOperator`
 - `scenarios[]` — `ai`, `social`, `streaming`, `gaming`, `ecommerce`, `email`, each weighted differently
 - `blocklists[]`, `abuse[]` (reports and attack history), `exposure`, `sharing`
+- `feedback` — real-world experience ratings (1-5) per scenario from people who were actually using the IP
 - `sources[]` — which data sources answered and which failed (a failed source is not a clean result)
 - `unknowns[]` — what cannot be determined from an IP alone
 - `reportUrl` — the human-readable report to cite

@@ -71,6 +71,7 @@ curl -s "https://ipure.dev/api/lookup?ip=8.8.8.8" | jq '{
 | `blocklists[]` | `listed` 命中；`benign` 命中但不构成风险（Spamhaus PBL 只是住宅段声明）；`unavailable` 该名单本次没查到 —— 是未知，**不是**没命中 |
 | `abuse[]` | 滥用举报分，以及 `attacks.byType`（撞库登录、批量注册、漏洞扫描……） |
 | `sources[]` | 各数据源本次的状态。`ok: false` 是该源失败 —— 缺了证据，不等于干净 |
+| `feedback` | 实测反馈：正在用这个 IP 的访客给各场景打的真实使用体验分，键为场景 id，含 `count` 与 `average`（1-5：5 很顺、3 勉强、1 不能用）。某场景满 3 人才出现。它独立于评分 —— 有的话，和 IPure 自己的结论并排告诉用户 |
 | `unknowns[]` | 仅凭 IP 无法判断的事。每次都要转告用户 |
 | `queriedAt`、`stale` | 报告生成时间；`stale: true` 说明报告较旧，值得让用户去网页重新检测 |
 | `reportUrl` | 网页版报告，引用结论时附上 |

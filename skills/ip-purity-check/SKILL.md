@@ -73,6 +73,7 @@ Text fields (`label`, `verdict`, `detail`, `reason`, `levelLabel`) are in Chines
 | `blocklists[]` | `listed` = hit. `benign` = hit that is not a risk (Spamhaus PBL only declares a residential range). `unavailable` = the list could not be queried — unknown, **not** clean |
 | `abuse[]` | Abuse-report score and `attacks.byType` (login attempts, registration attempts, vulnerability probing…) |
 | `sources[]` | Per-source status. `ok: false` means that source failed — missing evidence, not a clean result |
+| `feedback` | Real-world experience ratings from visitors who were actually using this IP, keyed by scenario id: `count` and `average` (1-5; 5 = works smoothly, 3 = usable with frequent captchas, 1 = does not work). A scenario appears only once it has 3+ ratings. Independent of the score — when present, quote it next to IPure's own verdict |
 | `unknowns[]` | What cannot be determined from an IP alone. Always pass these on |
 | `queriedAt`, `stale` | When the report was generated; `stale: true` means it is old enough that a re-check in the browser is worthwhile |
 | `reportUrl` | The human-readable report. Cite it |
