@@ -55,6 +55,18 @@ Or call the API yourself:
 curl -s "https://ipure.dev/api/lookup?ip=8.8.8.8" | jq '{purity: .risk.purity, verdict: .risk.verdict, scenarios: [.scenarios[] | {id, score, levelLabel}], report: .reportUrl}'
 ```
 
+## No agent? Use it from a terminal
+
+The same check is available as plain text, so you can run it on a fresh VPS before anything is installed:
+
+```bash
+curl -L ipure.dev                    # the machine's current egress IP
+curl -L ipure.dev/cli/8.8.8.8        # a specific IP (IPv4 or IPv6)
+bash <(curl -sL ipure.dev/cli.sh)    # IPv4 and IPv6, one report each
+```
+
+`-L` follows the redirect to https. Add `?color=0` (or `NO_COLOR=1` for the script) to drop ANSI colours before pasting the report somewhere. Nothing is installed and nothing runs on your machine beyond `curl`; `cli.sh` is about twenty lines and worth reading first. The text report is written in Chinese — agents should keep using the JSON API above.
+
 ## What the API gives you
 
 - `risk.purity` (0-100, higher is cleaner), level, verdict, **and a separate `confidence`**
@@ -98,6 +110,16 @@ cp -r ipure-skills/skills/ip-purity-check-zh ~/.claude/skills/
 ```
 
 然后直接问：「我买了个代理，出口是 146.70.132.85，能登 ChatGPT 吗？」「开始爬之前先查一下我现在的出口 IP」。
+
+不用 Agent 也能查，终端里一条命令（新机到手、什么都没装的时候最顺手）：
+
+```bash
+curl -L ipure.dev                    # 查本机当前的出口 IP
+curl -L ipure.dev/cli/8.8.8.8        # 查指定 IP
+bash <(curl -sL ipure.dev/cli.sh)    # IPv4、IPv6 各查一次
+```
+
+加 `?color=0` 关掉颜色，方便贴到论坛。不安装任何东西，`cli.sh` 只有二十来行，建议先读一遍。
 
 接口文档：<https://ipure.dev/docs/api> · 数据洞察：<https://ipure.dev/insights>
 
