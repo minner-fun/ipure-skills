@@ -69,7 +69,8 @@ Text fields (`label`, `verdict`, `detail`, `reason`, `levelLabel`) are in Chines
 | `nativeType` | `native` (registered and used in the same country) · `broadcast` (announced cross-region — platforms may see a location mismatch) |
 | `flags` | `isProxy`, `isVpn`, `isTor`, `isHosting`, `isRelay` (iCloud Private Relay / WARP), … A flag confirmed by a single source is scored at half weight — see `flagAgreement` |
 | `vpnOperator` | Present only for known commercial VPNs (Mullvad, NordVPN, …): name, anonymity, logging policy, protocols |
-| `scenarios[]` | Suitability per use case, each with its own weighting: `ai`, `social`, `streaming`, `gaming`, `ecommerce`, `email`. Levels: excellent · good · fair · poor · unusable · `restricted` (the region itself is not served, e.g. AI services from mainland China) |
+| `scenarios[]` | Suitability per use case, each with its own weighting: `ai`, `social`, `streaming`, `gaming`, `ecommerce`, `email`. Levels: excellent · good · fair · poor · unusable · `restricted` (the region itself is not served, e.g. AI services from mainland China) · `not_applicable` (see next row). Do not quote `score` for either of those two levels |
+| `scenarioApplicable` | `false` means the address is public infrastructure (a public DNS resolver, a search-engine crawler, …), not anyone's egress IP, so per-scenario suitability does not apply; the reason is in `scenarioNote`. Report purity and ownership only — never say it is "suitable" for a use case |
 | `blocklists[]` | `listed` = hit. `benign` = hit that is not a risk (Spamhaus PBL only declares a residential range). `unavailable` = the list could not be queried — unknown, **not** clean |
 | `abuse[]` | Abuse-report score and `attacks.byType` (login attempts, registration attempts, vulnerability probing…) |
 | `sources[]` | Per-source status. `ok: false` means that source failed — missing evidence, not a clean result |

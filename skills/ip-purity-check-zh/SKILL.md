@@ -67,7 +67,8 @@ curl -s "https://ipure.dev/api/lookup?ip=8.8.8.8" | jq '{
 | `nativeType` | `native` 原生（注册地与使用地一致）· `broadcast` 广播（跨区宣告，平台可能判为地区不符） |
 | `flags` | `isProxy`、`isVpn`、`isTor`、`isHosting`、`isRelay`（iCloud 专用代理 / WARP）等。只有一家数据源确认的判定在评分里按半数计权，见 `flagAgreement` |
 | `vpnOperator` | 只有已知商业 VPN 才有（Mullvad、NordVPN 等）：名称、匿名度、是否留日志、协议 |
-| `scenarios[]` | 分场景适用性，各有一套权重：`ai`、`social`、`streaming`、`gaming`、`ecommerce`、`email`。`restricted` 表示地区本身不受支持（如大陆 IP 之于境外 AI 服务） |
+| `scenarios[]` | 分场景适用性，各有一套权重：`ai`、`social`、`streaming`、`gaming`、`ecommerce`、`email`。`restricted` 表示地区本身不受支持（如大陆 IP 之于境外 AI 服务）；`not_applicable` 见下一行。这两种 level 的 `score` 不要引用 |
+| `scenarioApplicable` | `false` 表示该地址是公共基础设施（公共 DNS、搜索引擎爬虫等），不是谁的上网出口，场景评估不适用，原因在 `scenarioNote`。此时只报告纯净度与归属，不要说它「适合」做什么 |
 | `blocklists[]` | `listed` 命中；`benign` 命中但不构成风险（Spamhaus PBL 只是住宅段声明）；`unavailable` 该名单本次没查到 —— 是未知，**不是**没命中 |
 | `abuse[]` | 滥用举报分，以及 `attacks.byType`（撞库登录、批量注册、漏洞扫描……） |
 | `sources[]` | 各数据源本次的状态。`ok: false` 是该源失败 —— 缺了证据，不等于干净 |

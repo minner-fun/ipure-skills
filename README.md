@@ -76,6 +76,7 @@ bash <(curl -sL ipure.dev/cli.sh)    # IPv4 and IPv6, one report each
 - `blocklists[]`, `abuse[]` (reports and attack history), `exposure`, `sharing`
 - `feedback` — real-world experience ratings (1-5) per scenario from people who were actually using the IP
 - `sources[]` — which data sources answered and which failed (a failed source is not a clean result)
+- `scenarioApplicable` / `scenarioNote` — `false` when the address is public infrastructure (e.g. 8.8.8.8) rather than an egress IP, so scenario suitability does not apply
 - `unknowns[]` — what cannot be determined from an IP alone
 - `reportUrl` — the human-readable report to cite
 
