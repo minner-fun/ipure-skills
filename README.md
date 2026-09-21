@@ -52,7 +52,7 @@ Any agent that reads `SKILL.md` files works the same way: drop the folder where 
 Or call the API yourself:
 
 ```bash
-curl -s "https://ipure.dev/api/lookup?ip=8.8.8.8" | jq '{purity: .risk.purity, verdict: .risk.verdict, scenarios: [.scenarios[] | {id, score, levelLabel}], report: .reportUrl}'
+curl -s "https://ipure.dev/en/ip/8.8.8.8.json" | jq '{purity: .risk.purity, verdict: .risk.verdict, scenarios: [.scenarios[] | {id, score, levelLabel}], report: .reportUrl}'
 ```
 
 ## No agent? Use it from a terminal
@@ -80,7 +80,9 @@ bash <(curl -sL ipure.dev/cli.sh)    # IPv4 and IPv6, one report each
 - `unknowns[]` — what cannot be determined from an IP alone
 - `reportUrl` — the human-readable report to cite
 
-Docs: <https://ipure.dev/docs/api> · OpenAPI: <https://ipure.dev/openapi.json> · For models: <https://ipure.dev/llms.txt> · Aggregate statistics: <https://ipure.dev/insights>
+Docs: <https://ipure.dev/en/docs/api> · OpenAPI: <https://ipure.dev/openapi.json> · For models: <https://ipure.dev/en/llms.txt> · Example report: <https://ipure.dev/en/ip/8.8.8.8> · Aggregate statistics (Chinese): <https://ipure.dev/insights>
+
+Every report exists in three shapes and two languages: `/en/ip/{ip}` (web page), `/en/ip/{ip}.json`, `/en/ip/{ip}.txt` — drop `/en` for Chinese. `/api/lookup?ip={ip}&lang=en` is equivalent to the `.json` address.
 
 ## Limits
 

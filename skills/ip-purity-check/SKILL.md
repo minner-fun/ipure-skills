@@ -27,19 +27,21 @@ IPure (https://ipure.dev) aggregates RDAP, BGP, cloud provider ranges, DNSBLs, t
 Look up a specific IP (IPv4 or IPv6):
 
 ```bash
-curl -s "https://ipure.dev/api/lookup?ip=8.8.8.8"
+curl -s "https://ipure.dev/en/ip/8.8.8.8.json"
 ```
+
+That returns the report with all text in English (verdict, deduction reasons, per-scenario notes, unknowns). Scores, points and level codes are language-independent. If your environment cannot open that URL, the same JSON is embedded in the report page `https://ipure.dev/en/ip/8.8.8.8` as `<script id="ipure-report" type="application/json">`, and `https://ipure.dev/en/ip/8.8.8.8.txt` is a plain-text version.
 
 Look up the caller's own egress IP — omit `ip`. This never requires verification, so it is the right call for "check my current IP":
 
 ```bash
-curl -s "https://ipure.dev/api/lookup"
+curl -s "https://ipure.dev/api/lookup?lang=en"
 ```
 
 The full report is large. Pipe it through this filter to keep only what matters:
 
 ```bash
-curl -s "https://ipure.dev/api/lookup?ip=8.8.8.8" | jq '{
+curl -s "https://ipure.dev/en/ip/8.8.8.8.json" | jq '{
   ip, reportUrl, queriedAt, stale,
   purity: .risk.purity, label: .risk.label, verdict: .risk.verdict, confidence: .risk.confidence,
   usageType, nativeType,
@@ -107,4 +109,4 @@ User: "I bought a proxy, exit IP is 146.70.132.85 — can I use it for ChatGPT?"
 
 Run the lookup, then answer along these lines: purity 37/100 (risky); datacenter IP at M247 identified as a VPN exit and listed on two blocklists; the AI-services scenario is rated unusable, main problem: datacenter IP; AI platforms are the least tolerant of datacenter and proxy exits, so expect blocks or degraded service; suggest a residential or ISP proxy instead; note that platform-internal data is not visible; link the report.
 
-Full API reference: https://ipure.dev/docs/api · OpenAPI: https://ipure.dev/openapi.json
+Full API reference: https://ipure.dev/en/docs/api · OpenAPI: https://ipure.dev/openapi.json · For models: https://ipure.dev/en/llms.txt
