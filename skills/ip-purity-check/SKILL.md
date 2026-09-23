@@ -107,6 +107,6 @@ Call the API once per IP (pause about a second between calls), then present a ta
 
 User: "I bought a proxy, exit IP is 146.70.132.85 — can I use it for ChatGPT?"
 
-Run the lookup, then answer along these lines: purity 37/100 (risky); datacenter IP at M247 identified as a VPN exit and listed on two blocklists; the AI-services scenario is rated unusable, main problem: datacenter IP; AI platforms are the least tolerant of datacenter and proxy exits, so expect blocks or degraded service; suggest a residential or ISP proxy instead; note that platform-internal data is not visible; link the report.
+Run the lookup, then answer along these lines: purity 37/100 (risky); datacenter IP at M247 identified as a VPN exit and listed on two blocklists; the AI-services scenario is rated "best avoided", main problem: datacenter IP; AI platforms are the least tolerant of datacenter and proxy exits, so expect blocks or degraded service; suggest a residential or ISP proxy instead; note that platform-internal data is not visible; link the report.
 
 Full API reference: https://ipure.dev/en/docs/api · OpenAPI: https://ipure.dev/openapi.json · For models: https://ipure.dev/en/llms.txt
